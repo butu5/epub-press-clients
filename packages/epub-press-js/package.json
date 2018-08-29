@@ -9,10 +9,10 @@
         "tests": "test"
     },
     "scripts": {
-        "test": "export NODE_ENV=test && open http://localhost:5001/tests && webpack-dev-server",
-        "start": "export NODE_ENV=development && webpack --watch --progress --color",
-        "build": "export NODE_ENV=development && webpack",
-        "build-prod": "export NODE_ENV=production && webpack --optimize-minimize --optimize-dedupe",
+        "test": "set NODE_ENV=test && start chrome.exe http://localhost:5000/tests && webpack-dev-server",
+        "start": "set NODE_ENV=development && webpack --watch --progress --color",
+        "build": "set NODE_ENV=development && webpack",
+        "build-prod": "set NODE_ENV=production && webpack --optimize-minimize --optimize-dedupe",
         "preversion": "npm run-script build-prod",
         "prepublish": "npm run build-prod"
     },

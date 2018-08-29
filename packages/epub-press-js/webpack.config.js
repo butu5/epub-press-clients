@@ -4,14 +4,15 @@ const webpack = require('webpack');
 
 const MODULE_LOADERS = [
     {
+        type: 'javascript/auto',
         test: /\.json$/,
         exclude: /node_modules/,
-        loader: 'json-loader',
+        use: 'json-loader',
     },
     {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        use: 'babel-loader',
     },
 ];
 
@@ -26,7 +27,7 @@ if (process.env.NODE_ENV !== 'test') {
             libraryTarget: 'umd',
         },
         module: {
-            loaders: MODULE_LOADERS,
+            rules: MODULE_LOADERS,
         },
         plugins: [
             new webpack.DefinePlugin({
@@ -34,14 +35,14 @@ if (process.env.NODE_ENV !== 'test') {
             }),
         ],
         resolve: {
-            extensions: ['', '.js'],
+            extensions: ['.js'],
         },
         externals: [{
             fs: true,
             'isomorphic-fetch': true,
         }],
         devServer: {
-            hostname: 'localhost',
+            host: 'localhost',
             port: '5000',
             inline: true,
         },
@@ -54,7 +55,7 @@ if (process.env.NODE_ENV !== 'test') {
             path: path.join(__dirname, 'tests'),
         },
         module: {
-            loaders: MODULE_LOADERS,
+            rules: MODULE_LOADERS,
         },
         plugins: [
             new webpack.DefinePlugin({
@@ -62,14 +63,14 @@ if (process.env.NODE_ENV !== 'test') {
             }),
         ],
         resolve: {
-            extensions: ['', '.js'],
+            extensions: ['.js'],
         },
         externals: [{
             fs: true,
             'isomorphic-fetch': true,
         }],
         devServer: {
-            hostname: 'localhost',
+            host: 'localhost',
             port: '5001',
             inline: true,
         },
